@@ -45,6 +45,7 @@
     </ion-item>
   </form>
   <form id="cadastrarDadosPessoais13-form13">
+  <ion-list radio-group>
     <ion-item id="cadastrarDadosPessoais13-radio8">
       <ion-label>
         Masculino
@@ -57,8 +58,12 @@
       </ion-label>
       <ion-radio></ion-radio>
     </ion-item>
+    </ion-list>
   </form>
-  <button id="cadastrarDadosPessoais13-button8" ion-button color="positive" block icon-right on-click="goToCadastrarLoginESenha23()">
+  <button id="cadastrarDadosPessoais13-button8" ion-button color="positive" block icon-right on-click="presentLoading(goToCadastrarLoginESenha23());"
+
+
+  >
     Ir Para o Passo 2
     <ion-icon name="arrow-forward"></ion-icon>
   </button>

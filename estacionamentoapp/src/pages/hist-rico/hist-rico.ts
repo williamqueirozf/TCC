@@ -8,6 +8,9 @@ import { NavController } from 'ionic-angular';
 export class HistRicoPage {
 
   constructor(public navCtrl: NavController) {
+
   }
-  
+
+
+
 }

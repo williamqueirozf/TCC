@@ -15,7 +15,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { SobrePage } from '../pages/sobre/sobre';
 import { RedesCredenciadasPage } from '../pages/redes-credenciadas/redes-credenciadas';
 
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -37,6 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    NgxQRCodeModule,
     IonicModule.forRoot(estacionamentoApp)
   ],
   bootstrap: [IonicApp],
