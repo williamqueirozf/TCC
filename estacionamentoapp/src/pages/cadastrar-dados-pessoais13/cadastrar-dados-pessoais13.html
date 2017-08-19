@@ -9,62 +9,71 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page15">
-  <form id="cadastrarDadosPessoais13-form11">
-    <ion-item id="cadastrarDadosPessoais13-input14">
-      <ion-label>
-        Nome
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="cadastrarDadosPessoais13-input15">
-      <ion-label>
-        Data Nascimento
-      </ion-label>
-      <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
-    <div class="spacer" style="width:300px;height:1px;" id="cadastrarDadosPessoais13-spacer7"></div>
-  </form>
-  <form id="cadastrarDadosPessoais13-form12">
-    <ion-item id="cadastrarDadosPessoais13-input16">
-      <ion-label>
-        CPF
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="cadastrarDadosPessoais13-input17">
-      <ion-label>
-        Email
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="cadastrarDadosPessoais13-input18">
-      <ion-label>
-        Telefone
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-  </form>
-  <form id="cadastrarDadosPessoais13-form13">
-  <ion-list radio-group>
-    <ion-item id="cadastrarDadosPessoais13-radio8">
-      <ion-label>
-        Masculino
-      </ion-label>
-      <ion-radio></ion-radio>
-    </ion-item>
-    <ion-item id="cadastrarDadosPessoais13-radio10">
-      <ion-label>
-        Feminino
-      </ion-label>
-      <ion-radio></ion-radio>
-    </ion-item>
-    </ion-list>
-  </form>
-  <button id="cadastrarDadosPessoais13-button8" ion-button color="positive" block icon-right on-click="presentLoading(goToCadastrarLoginESenha23());"
+
+    <form [formGroup]="cadastro" (ngSubmit)="postDados()">
+      <h2 class="titulo">Informações Pessoais</h2>
+          <ion-list>
+                <ion-item>
+                      <ion-label>Nome</ion-label>
+                      <ion-input type="text" name="nome" formControlName="nome"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label>Data Nascimento </ion-label>
+                      <ion-input type="date" name="datanasc" formControlName="datanasc"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                      <ion-label>Email</ion-label>
+                      <ion-input type="email" name="email" formControlName="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                      <ion-label>CPF</ion-label>
+                      <ion-input type="text" name="cpf" formControlName="cpf"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                      <ion-label>Telefone</ion-label>
+                      <ion-input type="text" name="telefone" formControlName="telefone"></ion-input>
+                </ion-item>
+
+<h2 class="titulo">Sexo</h2>
+                <ion-list radio-group formControlName="sexo" name="sexo">
+                      <ion-item>
+                        <ion-label>Masculino</ion-label>
+                        <ion-radio checked="false" value="M"></ion-radio>
+                      </ion-item>
+
+                      <ion-item>
+                        <ion-label>Feminino</ion-label>
+                        <ion-radio checked="false" value="F"></ion-radio>
+                      </ion-item>
+
+                </ion-list>
 
 
-  >
+
+
+
+
+          </ion-list>
+
+
+
+
+          <button [disabled]="cadastro.invalid" ion-button full color="positive" block icon-right on-click="presentLoading(goToCadastrarLoginESenha23());" >
+              Ir Para o Passo 2
+              <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+    </form>
+         <p ion-text> {{ cadastro.value | json }}</p>
+
+<!--on-click="presentLoading(goToCadastrarLoginESenha23());"-->
+   <!-- alterado alterar > on-click="presentLoading(goToCadastrarLoginESenha23());" -->
+<!--  <button id="cadastrarDadosPessoais13-button8" ion-button full color="positive" block icon-right  >
     Ir Para o Passo 2
     <ion-icon name="arrow-forward"></ion-icon>
   </button>
+  <button ion-button full block color="danger">Enviar</button>-->
 </ion-content>

@@ -1,5 +1,6 @@
 {
   "name": "estacionamentoapp",
   "app_id": "34ab1230",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {}
 }

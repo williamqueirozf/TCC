@@ -19,6 +19,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ServiceProvider } from '../providers/service/service';//
+import { HttpModule } from '@angular/http';//
+
 @NgModule({
   declarations: [
     estacionamentoApp,
@@ -38,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     NgxQRCodeModule,
+    HttpModule,//
     IonicModule.forRoot(estacionamentoApp)
   ],
   bootstrap: [IonicApp],
@@ -59,7 +63,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ServiceProvider, useClass: ServiceProvider}//
   ]
 })
 export class AppModule {}
