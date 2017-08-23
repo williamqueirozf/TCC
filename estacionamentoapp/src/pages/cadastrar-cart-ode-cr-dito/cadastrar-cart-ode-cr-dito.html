@@ -34,8 +34,9 @@
       </ion-label>
       <ion-input type="number" name="validade" formControlName="validade"></ion-input>
     </ion-item>
-  </form>
-   <button  ion-button color="positive" block icon-right>
-    Finalizar Cadastro
-  </button>
+    <button  ion-button color="positive" block icon-right on-click="goToInicio()" >
+     Finalizar Cadastro
+   </button>
+     </form>
+   <p ion-text> {{ cadastro3.value | json }}</p>
 </ion-content>
