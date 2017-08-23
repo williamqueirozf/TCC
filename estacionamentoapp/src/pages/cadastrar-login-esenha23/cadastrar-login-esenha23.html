@@ -9,29 +9,29 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page8">
-  <form id="cadastrarLoginESenha23-form4">
-    <ion-list id="cadastrarLoginESenha23-list8">
-      <ion-item id="cadastrarLoginESenha23-input3">
+  <form [formGroup]="cadastro2" (ngSubmit)="postDados2()">
+    <ion-list>
+      <ion-item>
         <ion-label>
           Login
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" name="login" formControlName="login"></ion-input>
       </ion-item>
-      <ion-item id="cadastrarLoginESenha23-input5">
+      <ion-item>
         <ion-label>
           Senha
         </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+        <ion-input type="password" name="senha" formControlName="senha"></ion-input>
       </ion-item>
-      <ion-item id="cadastrarLoginESenha23-input4">
+      <ion-item>
         <ion-label>
           Confirme sua Senha
         </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
+        <ion-input type="password" name="confirmarsenha"></ion-input>
       </ion-item>
     </ion-list>
     <div class="spacer" style="height:40px;" id="cadastrarLoginESenha23-spacer4"></div>
-    <ion-item color="none" id="cadastrarLoginESenha23-list-item27">
+    <ion-item >
       <ion-avatar item-left>
         <img />
       </ion-avatar>
@@ -39,9 +39,10 @@
         Escolha um avatar
       </h2>
     </ion-item>
-    <button id="cadastrarLoginESenha23-button4" ion-button color="positive" block icon-right on-click="goToCadastrarCartODeCrDito()">
+    <button  ion-button color="positive" block icon-right on-click="goToCadastrarCartODeCrDito()">
       Ir Para o Passo 3
       <ion-icon name="arrow-forward"></ion-icon>
     </button>
   </form>
+   <p ion-text> {{ cadastro2.value | json }}</p>
 </ion-content>
