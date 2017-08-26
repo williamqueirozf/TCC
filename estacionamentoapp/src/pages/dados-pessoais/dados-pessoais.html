@@ -8,56 +8,27 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page16">
-  <form id="dadosPessoais-form16">
-    <ion-item id="dadosPessoais-input21">
-      <ion-label>
-        Nome
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input25">
-      <ion-label>
-        Data Nascimento
-      </ion-label>
-      <ion-input type="date" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input24">
-      <ion-label>
-        CPF
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input22">
-      <ion-label>
-        Email
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="dadosPessoais-input23">
-      <ion-label>
-        Telefone
-      </ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-  </form>
-  <form id="dadosPessoais-form17">
-  <ion-list radio-group>
-    <ion-item id="dadosPessoais-radio11" >
-      <ion-label>
-        Masculino
-      </ion-label>
-      <ion-radio></ion-radio>
-    </ion-item>
-    <ion-item id="dadosPessoais-radio12">
-      <ion-label>
-        Feminino
-      </ion-label>
-      <ion-radio></ion-radio>
-    </ion-item>
-    </ion-list>
-  </form>
-  <button id="dadosPessoais-button9" ion-button color="positive" block>
-    Salvar Alterações
-  </button>
+
+<ion-content padding>
+
+  <ion-list *ngFor="let user of users">
+        <ion-item-sliding>
+              <ion-item>
+                    <h1 *ngIf="nomes">{{user.nome}}</h1>
+                    <p>{{user.nome}}</p>
+                    <p>{{user.email}}</p>
+              </ion-item>
+              <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="deletarPerfil(user)">
+                          Deletar
+                    </button>
+              </ion-item-options>
+              <ion-item-options side="left">
+                    <button ion-button color="secondary" (click)="editarPerfil(user)">
+                          Editar
+                    </button>
+              </ion-item-options>
+        </ion-item-sliding>
+  </ion-list>
+
 </ion-content>

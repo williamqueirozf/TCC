@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class ServiceProvider {
+export class ServiceProviderDadospessoais {
 
       api : string = 'http://localhost:80/APIEST/';
 
@@ -30,5 +30,24 @@ export class ServiceProvider {
                   (res:Response) => {return res.json();}
             );
       }
+
+      deleteData(id){
+      let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+      return this.http.post(this.api + "apiDeleta.php", id, {
+            headers:headers
+            }).map(
+            (res:Response) => {return res.json();}
+      );
+}
+
+      updateData(data) {
+    let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+    return this.http.post(this.api + "apiUpdate.php", data, {
+          headers:headers,
+          method:"POST"
+    }).map(
+          (res:Response) => {return res.json();}
+    );
+}
 
 }

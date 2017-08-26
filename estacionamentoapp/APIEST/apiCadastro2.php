@@ -26,8 +26,13 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
    //VERIFICA SE TEM CONEXÃO
     if($db){
        //$sql = " insert into usuarios(nome,email,cpf) values('".$nome."','".$email."','".md5($cpf)."')"; ,cpf_pessoa,dt_nasc_pessoa,telefone_pessoa,dt_cadastro_pessoa//(antigo)
-        $sql = " insert into usuario(login,senha)
-        values('".$login."','".$senha."')";
+        //$sql = " insert into usuario(login,senha)  values('".$login."','".$senha."')"; //FUNCIONANDO
+        $sql = " UPDATE USUARIO
+                  join pessoa
+                  on pessoa.id_pessoa = usuario.id_pessoa
+                  SET LOGIN='".$login."',SENHA='".$senha."'
+                  WHERE LOGIN IS NULL
+        ";
 
         $query = $db->prepare($sql);
         $query ->execute();

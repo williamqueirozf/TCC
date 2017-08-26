@@ -10,7 +10,8 @@ import { AlertController } from 'ionic-angular';//
 export class InicioPage {
   elementType : 'url' | 'canvas' | 'img' = 'url';
     value : string = 'Aqui é Evotech';
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,
+              private alertCtrl: AlertController) {
   }
 
   showPrompt() { //metodo popup guardar vaga

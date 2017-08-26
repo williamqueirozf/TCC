@@ -12,7 +12,7 @@ try {
 
 	if(!$con){
 		echo "Não foi possivel conectar com Banco de Dados!";
-	}		
+	}
 
 	$query = $con->prepare('SELECT * FROM usuarios');
 

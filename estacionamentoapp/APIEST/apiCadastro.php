@@ -35,8 +35,12 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
    //VERIFICA SE TEM CONEXÃO
     if($db){
        //$sql = " insert into usuarios(nome,email,cpf) values('".$nome."','".$email."','".md5($cpf)."')"; ,cpf_pessoa,dt_nasc_pessoa,telefone_pessoa,dt_cadastro_pessoa//(antigo)
-        $sql = " insert into pessoa(nome_pessoa,email_pessoa,cpf_pessoa,dt_nasc_pessoa,dt_cadastro_pessoa,telefone_pessoa,sexo_pessoa)
-        values('".$nome."','".$email."','".$cpf."','".$datanasc."',now(),'".$telefone."','".$sexo."')";
+        $sql =" insert into pessoa(nome_pessoa,email_pessoa,cpf_pessoa,dt_nasc_pessoa,dt_cadastro_pessoa,telefone_pessoa,sexo_pessoa)
+        values('".$nome."','".$email."','".$cpf."','".$datanasc."',now(),'".$telefone."','".$sexo."');
+        INSERT CARTAO (ID_PESSOA) VALUES (LAST_INSERT_ID());
+        INSERT USUARIO (ID_PESSOA) VALUES (LAST_INSERT_ID());
+        ";
+
 
         $query = $db->prepare($sql);
         $query ->execute();

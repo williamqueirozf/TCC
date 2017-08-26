@@ -17,12 +17,15 @@ import { ServiceProvider } from '../../providers/service/service';//
   templateUrl: 'cadastrar-dados-pessoais13.html'
 })
 export class CadastrarDadosPessoais13Page {
+  
       cadastro : any = {};
       users : any[];
       nomes : boolean = true;
       teste:any ={
             text: 'entra'
       };
+
+
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController,

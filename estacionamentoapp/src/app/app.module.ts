@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServiceProvider } from '../providers/service/service';//
 import { ServiceProvider2 } from '../providers/service/service2';//
 import { ServiceProvider3 } from '../providers/service/service3';//
+import { ServiceProviderDadospessoais } from '../providers/service/servicedadospessoais';//
 import { HttpModule } from '@angular/http';//
 
 @NgModule({
@@ -68,7 +69,10 @@ import { HttpModule } from '@angular/http';//
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: ServiceProvider, useClass: ServiceProvider},//
     {provide: ServiceProvider2, useClass: ServiceProvider2},//
-    {provide: ServiceProvider3, useClass: ServiceProvider3}//
+    {provide: ServiceProvider3, useClass: ServiceProvider3},//
+    {provide: ServiceProviderDadospessoais, useClass: ServiceProviderDadospessoais}//
+
+
   ]
 })
 export class AppModule {}
