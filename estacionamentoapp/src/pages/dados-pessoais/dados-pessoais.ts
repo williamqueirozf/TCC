@@ -9,6 +9,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'dados-pessoais.html'
 })
 export class DadosPessoaisPage {
+
 cadastro : any = {};
 users : any[];
 nomes : boolean = true;

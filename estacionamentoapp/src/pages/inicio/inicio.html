@@ -5,12 +5,12 @@
     </button>
 
     <ion-title>
-
-      Inicio
+      Dados Pessoais
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page4">
+
+<ion-content>
   <div>
 
     <div align="center">
@@ -18,19 +18,21 @@
     </ngx-qrcode>
   </div>
   </div>
-  <ion-list id="inicio-list2">
-    <ion-item color="none" id="inicio-list-item8">
-      Nome
+  <ion-list *ngFor="let user of users">
+
+    <ion-item>
+      Nome {{url}}
     </ion-item>
-    <ion-item color="none" id="inicio-list-item9">
-      Login
+    <ion-item>
+      Login : {{user.login}}
     </ion-item>
     <ion-item >
       Uso
+
           <ion-icon item-right name="refresh-circle"></ion-icon>
     </ion-item>
 
-    <ion-item color="none" id="inicio-list-item11">
+    <ion-item>
       Setor Utilizado:
 
       <ion-icon name="add-circle" item-right on-click="showPrompt();" style="color:blue"> </ion-icon>

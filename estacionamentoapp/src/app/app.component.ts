@@ -25,7 +25,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 })
 export class estacionamentoApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = DadosPessoaisPage;//InicioPage
+    rootPage:any = InicioPage;//InicioPage
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
