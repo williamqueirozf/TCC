@@ -3,9 +3,10 @@ header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 
 
-$dns = "mysql:host=localhost;dbname=usuarios";
+$dns = "mysql:host=localhost;dbname=estacionamentobd";
 $user = "root";
 $pass = "";
+//aqui
 
 try {
 	$con = new PDO($dns, $user, $pass);
@@ -14,7 +15,7 @@ try {
 		echo "Não foi possivel conectar com Banco de Dados!";
 	}
 
-	$query = $con->prepare('SELECT * FROM usuarios');
+	$query = $con->prepare("SELECT * FROM pessoa");
 
 		$query->execute();
 
@@ -24,10 +25,12 @@ try {
 			if ($out != "[") {
 				$out .= ",";
 			}
-			$out .= '{"id": "'.$result["id"].'",';
-			$out .= '"nome": "'.$result["nome"].'",';
-			$out .= '"email": "'.$result["email"].'",';
-			$out .= '"senha": "'.$result["senha"].'"}';
+			$out .= '{"id_pessoa": "'.$result["id_pessoa"].'",';
+			$out .= '"nome_pessoa": "'.$result["nome_pessoa"].'",';
+			$out .= '"email_pessoa": "'.$result["email_pessoa"].'",';
+			$out .= '"cpf_pessoa": "'.$result["cpf_pessoa"].'",';
+			$out .= '"telefone_pessoa": "'.$result["telefone_pessoa"].'",';
+			$out .= '"sexo_pessoa": "'.$result["sexo_pessoa"].'"}';
 		}
 		$out .= "]";
 		echo $out;
