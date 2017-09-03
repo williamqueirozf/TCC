@@ -19,6 +19,7 @@ export class ServiceProvider3 {
       getData() {
             return this.http.get(this.api + 'apiRecupera.php').map(res=>res.json())
       }
+      
 
             postData(parans) {
             let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });

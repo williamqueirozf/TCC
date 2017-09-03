@@ -21,5 +21,19 @@ export class ServiceProviderInicio {
             return this.http.get(this.api + 'apiRecuperaInicio.php').map(res=>res.json())
       }
 
+      getDataInicioVaga() {
+            return this.http.get(this.api + 'apiRecuperaVaga.php').map(res=>res.json())
+      }
+
+      updateVaga(data) {
+    let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+    return this.http.post(this.api + "apiUpdateVaga.php", data, {
+          headers:headers,
+          method:"POST"
+    }).map(
+          (res:Response) => {return res.json();}
+    );
+}
+
 
 }

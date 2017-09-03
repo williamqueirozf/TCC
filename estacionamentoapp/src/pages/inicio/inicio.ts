@@ -12,6 +12,7 @@ import { ServiceProvider } from '../../providers/service/service';//
 export class InicioPage {
   
   users : any[];
+  vaga  : any[];
   nomes : boolean = true;
   elementType : 'url' | 'canvas' | 'img' = 'url';
     value : string = 'Código gerado';  ;
@@ -24,10 +25,11 @@ export class InicioPage {
   }
 
   ngOnInit() {
+           this.getVaga();
            this.getDados();
      }
 
-     getDados() {
+    getDados() {
      //retorno de Dados
      this.service.getData()
            .subscribe(
@@ -36,33 +38,56 @@ export class InicioPage {
            );
      }
 
-     showPrompt() { //metodo popup guardar vaga
-    let prompt = this.alertCtrl.create({
-      title: 'Guardar Vaga',
-      //message: "Enter a name for this new album you're so keen on adding",
-      inputs: [
-        {
-          name: 'title',
-          placeholder: 'Insira o Setor'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Salvar',
-          handler: data => {
-            console.log('Saved clicked');
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
+     getVaga() {
+     //retorno de Dados
+     this.service.getDataInicioVaga()
+           .subscribe(
+                 data=> this.vaga = data
+                 ,err=> console.log(err)
+           );
+     }
+
+     salvarVaga(req) {
+         let prompt = this.alertCtrl.create({
+           title: 'Lembrar Vaga',
+           inputs: [
+             {
+               name: 'vaga_utilizada',
+               placeholder: 'Guarde sua Vaga',
+               value:req.vaga_utilizada
+             },
+
+           ],
+           buttons: [
+             {
+               text: 'Cancelar',
+               handler: data => {}
+             },
+             {
+               text: 'Salvar',
+               handler: data => {
+
+                let params:any={
+                  //  variavel banco de dados:data.variavel java
+                       id_hp: req.id_hp,
+                       vaga_utilizada: data.vaga_utilizada
+                       
+                 }
+                 console.log(data);
+                  this.service.updateVaga(params)
+                 .subscribe(
+                       data=>{
+                             console.log(data.mensage);
+                             this.getVaga();
+                             },
+                       err=>console.log(err)
+                 );
+               }
+             }
+           ]
+         });
+         prompt.present();
+       }
 
 
 

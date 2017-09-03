@@ -18,12 +18,12 @@
     </ngx-qrcode>
   </div>
   </div>
-  <ion-list *ngFor="let user of users">
+  <ion-list >
 
     <ion-item>
-      Nome {{url}}
+      Nome 
     </ion-item>
-    <ion-item>
+    <ion-item *ngFor="let user of users">
       Login : {{user.login}}
     </ion-item>
     <ion-item >
@@ -32,11 +32,13 @@
           <ion-icon item-right name="refresh-circle"></ion-icon>
     </ion-item>
 
-    <ion-item>
-      Setor Utilizado:
-
-      <ion-icon name="add-circle" item-right on-click="showPrompt();" style="color:blue"> </ion-icon>
+    <ion-item *ngFor="let salva of vaga">
+      Setor Utilizado: {{salva.vaga_utilizada}}
+      
+      <ion-icon name="add-circle" item-right on-click="salvarVaga(salva);" style="color:blue"> </ion-icon>
+      
     </ion-item>
+    
   </ion-list>
 
 </ion-content>

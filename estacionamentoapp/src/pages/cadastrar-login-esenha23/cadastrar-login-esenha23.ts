@@ -38,7 +38,7 @@ export class CadastrarLoginESenha23Page {
     this.navCtrl.push(CadastrarCartODeCrDitoPage);
   }
 
-  getDados() {
+    getDados() {
         //retorno de Dados
         this.service.getData()
               .subscribe(

@@ -16,7 +16,7 @@ export class ServiceProvider2 {
       api : string = 'http://localhost:80/APIEST/';
 
   constructor(public http: Http) {}
-      getData() {
+     getData() {
             return this.http.get(this.api + 'apiRecupera.php').map(res=>res.json())
       }
 

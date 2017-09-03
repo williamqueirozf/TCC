@@ -31,14 +31,6 @@ export class ServiceProvider {
             );
       }
 
-      deleteData(id){
-      let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-      return this.http.post(this.api + "apiDeleta.php", id, {
-            headers:headers
-            }).map(
-            (res:Response) => {return res.json();}
-      );
-}
 
       updateData(data) {
     let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
