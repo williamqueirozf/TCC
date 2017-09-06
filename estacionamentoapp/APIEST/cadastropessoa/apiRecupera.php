@@ -1,4 +1,5 @@
 <?php
+//Essa api recupera dados pessoais e coloca no menu alterar dados pessoais
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 

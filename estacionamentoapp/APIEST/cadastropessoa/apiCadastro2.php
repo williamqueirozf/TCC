@@ -1,5 +1,5 @@
 <?php
-//ESTA API ESTÁ UTILIZANDO O BENCO DE DADOS AULA COM A TABELA
+//ESTA API atualiza dados na tabela usuário, passo 2 do cadastro de novo usuário
 //USUÁRIOS E UTILIZA ENVIO E RETORNO EM OBJETOS
 header("Access-Control-Allow-Origin:http://localhost:8100");
 header("Content-Type: application/x-www-form-urlencoded");
@@ -8,24 +8,16 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     $data = file_get_contents("php://input");
     $objData = json_decode($data);
     // TRANSFORMA OS DADOS
-    $nomecartao = $objData->nomecartao;
-    $numerocartao = $objData->numerocartao;
-    $codigoverificador = $objData->codigoverificador;
-    $validade = $objData->validade;
+    $login = $objData->login;
+    $senha = $objData->senha;
 
 
     // LIMPA OS DADOS
-    $nomecartao = stripslashes($nomecartao);
-    $numerocartao = stripslashes($numerocartao);
-    $codigoverificador = stripslashes($codigoverificador);
-    $validade = stripslashes($validade);
+    $login = stripslashes($login);
+    $senha = stripslashes($senha);
 
-    $nomecartao = trim($nomecartao);
-    $numerocartao = trim($numerocartao);
-    $codigoverificador = trim($codigoverificador);
-    $validade = trim($validade);
-
-
+    $login = trim($login);
+    $senha = trim($senha);
 
     $dados; // RECEBE ARRAY PARA RETORNO
     // INSERE OS DADOS
@@ -34,22 +26,13 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
    //VERIFICA SE TEM CONEXÃO
     if($db){
        //$sql = " insert into usuarios(nome,email,cpf) values('".$nome."','".$email."','".md5($cpf)."')"; ,cpf_pessoa,dt_nasc_pessoa,telefone_pessoa,dt_cadastro_pessoa//(antigo)
-        /*$sql = " insert into cartao(nome_cartao,numero_cartao,codseg_cartao,DT_VENC_CARTAO,DT_CADASTRO_CARTAO,id_pessoa)
-        values('".$nomecartao."','".$numerocartao."','".$codigoverificador."','".$validade."',now(),LAST_INSERT_ID(5))";
-        */
-    $sql = " UPDATE CARTAO
-              join pessoa
-              on pessoa.id_pessoa = cartao.id_pessoa
-              SET nome_cartao='".$nomecartao."',numero_cartao='".$numerocartao."',codseg_cartao='".$codigoverificador."'
-              ,DT_VENC_CARTAO='".$validade."',DT_CADASTRO_CARTAO=now()
-
-              WHERE NOME_CARTAO IS NULL
-
-    ";
-
-
-
-
+        //$sql = " insert into usuario(login,senha)  values('".$login."','".$senha."')"; //FUNCIONANDO
+        $sql = " UPDATE USUARIO
+                  join pessoa
+                  on pessoa.id_pessoa = usuario.id_pessoa
+                  SET LOGIN='".$login."',SENHA='".$senha."'
+                  WHERE LOGIN IS NULL
+        ";
 
         $query = $db->prepare($sql);
         $query ->execute();

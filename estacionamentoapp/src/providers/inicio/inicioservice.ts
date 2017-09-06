@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProviderInicio {
 
-      api : string = 'http://localhost:80/APIEST/';
+      api : string = 'http://localhost:80/APIEST/inicio/';
 
 
   constructor(public http: Http) {}

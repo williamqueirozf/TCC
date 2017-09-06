@@ -1,5 +1,5 @@
 <?php
-//ESTA API ESTÁ UTILIZANDO O BENCO DE DADOS AULA COM A TABELA
+//ESTA API está inserindo dados na tabela pessoa de acordo com passo 1 do cadastro do usuário
 //USUÁRIOS E UTILIZA ENVIO E RETORNO EM OBJETOS
 header("Access-Control-Allow-Origin:http://localhost:8100");
 header("Content-Type: application/x-www-form-urlencoded");
@@ -8,17 +8,26 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     $data = file_get_contents("php://input");
     $objData = json_decode($data);
     // TRANSFORMA OS DADOS
-    $login = $objData->login;
-    $senha = $objData->senha;
-
+    $nome = $objData->nome;
+    $datanasc = $objData->datanasc;
+    $telefone = $objData->telefone;
+    $email = $objData->email;
+    $cpf = $objData->cpf;
+    $sexo = $objData->sexo;
 
     // LIMPA OS DADOS
-    $login = stripslashes($login);
-    $senha = stripslashes($senha);
+    $nome = stripslashes($nome);
+    $datanasc = stripslashes($datanasc);
+    $email = stripslashes($email);
+    $cpf = stripslashes($cpf);
+    $telefone = stripslashes($telefone);
 
-    $login = trim($login);
-    $senha = trim($senha);
 
+    $nome = trim($nome);
+    $datanasc = trim($datanasc);
+    $email = trim($email);
+    $cpf = trim($cpf);
+    $telefone = trim($telefone);
     $dados; // RECEBE ARRAY PARA RETORNO
     // INSERE OS DADOS
     //@$db = new PDO("mysql:host=localhost;dbname=usuarios", "root", ""); //antigo
@@ -26,13 +35,12 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
    //VERIFICA SE TEM CONEXÃO
     if($db){
        //$sql = " insert into usuarios(nome,email,cpf) values('".$nome."','".$email."','".md5($cpf)."')"; ,cpf_pessoa,dt_nasc_pessoa,telefone_pessoa,dt_cadastro_pessoa//(antigo)
-        //$sql = " insert into usuario(login,senha)  values('".$login."','".$senha."')"; //FUNCIONANDO
-        $sql = " UPDATE USUARIO
-                  join pessoa
-                  on pessoa.id_pessoa = usuario.id_pessoa
-                  SET LOGIN='".$login."',SENHA='".$senha."'
-                  WHERE LOGIN IS NULL
+        $sql =" insert into pessoa(nome_pessoa,email_pessoa,cpf_pessoa,dt_nasc_pessoa,dt_cadastro_pessoa,telefone_pessoa,sexo_pessoa)
+        values('".$nome."','".$email."','".$cpf."','".$datanasc."',now(),'".$telefone."','".$sexo."');
+        INSERT CARTAO (ID_PESSOA) VALUES (LAST_INSERT_ID());
+        INSERT USUARIO (ID_PESSOA) VALUES (LAST_INSERT_ID());
         ";
+
 
         $query = $db->prepare($sql);
         $query ->execute();
@@ -46,6 +54,6 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
          };
     }
    else{
-          $dados = array('mensage' => "Não foi possivel inserir os dados! Tente novamente mais tarde.");
+          $dados = array('mensage' => "Não foi possivel iserir os dados! Tente novamente mais tarde.");
           echo json_encode($dados);
     };
