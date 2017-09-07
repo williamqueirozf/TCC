@@ -1,8 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
+//recupera login usuario
 
-//Utilizado para buscar Vaga e colocar na tela inicial
 $dns = "mysql:host=localhost;dbname=estacionamentobd";
 $user = "root";
 $pass = "";
@@ -15,25 +15,34 @@ try {
 		echo "Não foi possivel conectar com Banco de Dados!";
 	}
 
-	$query = $con->prepare("SELECT historico_pagamento.id_hp,vaga_utilizada FROM pessoa join historico_pagamento 
-		on pessoa.id_pessoa = historico_pagamento.id_pessoa 
-
-		");
-	//where historico_pagamento.dt_saida is null
+	$query = $con->prepare("SELECT * FROM usuario");
 
 		$query->execute();
 
-		$out = "[";
-
+/* 		$out = "[";
+//funcionando com chaves
 		while($result = $query->fetch()){
 			if ($out != "[") {
 				$out .= ",";
 			}
-			$out .= '{"id_hp": "'.$result["id_hp"].'",';
-			$out .= '"vaga_utilizada": "'.$result["vaga_utilizada"].'"}';
+			
+			$out .= ' "'.$result["login"].'"';
 		}
 		$out .= "]";
 		echo $out;
+		*/
+		//funcionando sem chaves
+		$out = "";
+		while($result = $query->fetch()){
+			if ($out != "") {
+				$out .= "";
+			}
+			
+			$out .= ' "'.$result["id_usuario"].'"';
+		}
+		$out .= "";
+		echo $out;
+		
 
 
 

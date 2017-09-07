@@ -15,11 +15,7 @@ try {
 		echo "Não foi possivel conectar com Banco de Dados!";
 	}
 
-	$query = $con->prepare("SELECT historico_pagamento.id_hp,vaga_utilizada FROM pessoa join historico_pagamento 
-		on pessoa.id_pessoa = historico_pagamento.id_pessoa 
-
-		");
-	//where historico_pagamento.dt_saida is null
+	$query = $con->prepare("SELECT * FROM pessoa");
 
 		$query->execute();
 
@@ -29,8 +25,8 @@ try {
 			if ($out != "[") {
 				$out .= ",";
 			}
-			$out .= '{"id_hp": "'.$result["id_hp"].'",';
-			$out .= '"vaga_utilizada": "'.$result["vaga_utilizada"].'"}';
+			$out .= '{"id_pessoa": "'.$result["id_pessoa"].'",';
+			$out .= '"nome_pessoa": "'.$result["nome_pessoa"].'"}';
 		}
 		$out .= "]";
 		echo $out;

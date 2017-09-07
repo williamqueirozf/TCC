@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';//
 import { ServiceProviderInicio } from '../../providers/inicio/inicioservice';//
-import { ServiceProvider } from '../../providers/service/service';//
+//import { ServiceProvider } from '../../providers/service/service';//
 
 @Component({
   selector: 'page-inicio',
@@ -12,28 +12,45 @@ import { ServiceProvider } from '../../providers/service/service';//
 export class InicioPage {
   
   users : any[];
+  tempoValor;
   vaga  : any[];
-  nomes : boolean = true;
+  nomeUsuario  : any[];   
+  nomes : boolean = true;  
   elementType : 'url' | 'canvas' | 'img' = 'url';
-    value : string = 'Código gerado';  ;
+  value;  //só recebe string
   constructor(public navCtrl: NavController,
               private alertCtrl: AlertController,
-              public service : ServiceProviderInicio,
-              public service1 : ServiceProvider
+              public service : ServiceProviderInicio
+              //public service1 : ServiceProvider
+              
 
             ) {
+    //this.value = {};
+    //this.vaga1[0]=1
   }
 
   ngOnInit() {
            this.getVaga();
-           this.getDados();
+           this.getDadosUsuarioId();
+           this.getDadosLogin() ;
+           this.getNomeInicio();
+           this.getTempoValor();
      }
 
-    getDados() {
+    getDadosLogin() {
      //retorno de Dados
-     this.service.getData()
+     this.service.getDataLogin()
            .subscribe(
                  data=> this.users = data
+                 ,err=> console.log(err)
+           );
+     }
+
+     getDadosUsuarioId() {
+     //retorno de Dados
+     this.service.getDataUsuarioId()
+           .subscribe(
+                 data=> this.value = data
                  ,err=> console.log(err)
            );
      }
@@ -43,6 +60,25 @@ export class InicioPage {
      this.service.getDataInicioVaga()
            .subscribe(
                  data=> this.vaga = data
+                 ,err=> console.log(err)
+           );
+     }
+
+
+     getNomeInicio() {
+     //retorno de Dados
+     this.service.getDataNome()
+           .subscribe(
+                 data=> this.nomeUsuario = data
+                 ,err=> console.log(err)
+           );
+     }
+
+     getTempoValor() {
+     //retorno de Dados
+     this.service.getDataTempoValor()
+           .subscribe(
+                 data=> this.tempoValor = data
                  ,err=> console.log(err)
            );
      }

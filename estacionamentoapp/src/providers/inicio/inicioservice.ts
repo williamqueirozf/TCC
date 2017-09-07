@@ -17,12 +17,25 @@ export class ServiceProviderInicio {
 
 
   constructor(public http: Http) {}
-      getData() {
-            return this.http.get(this.api + 'apiRecuperaInicio.php').map(res=>res.json())
+      getDataUsuarioId() {
+            return this.http.get(this.api + 'apiRecuperaQrcode.php').map(res=>res.json())
       }
+
+      getDataLogin() {
+            return this.http.get(this.api + 'apiRecuperaLogin.php').map(res=>res.json())
+      }
+
 
       getDataInicioVaga() {
             return this.http.get(this.api + 'apiRecuperaVaga.php').map(res=>res.json())
+      }
+
+      getDataNome() {
+            return this.http.get(this.api + 'apiRecuperaNome.php').map(res=>res.json())
+      }
+
+      getDataTempoValor() { //valor a pagar por tempo de uso
+            return this.http.get(this.api + 'apiRecuperaTempoValor.php').map(res=>res.json())
       }
 
       updateVaga(data) {

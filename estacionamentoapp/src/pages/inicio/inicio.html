@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content>
+<br>
+<br>
+<br>
   <div>
 
     <div align="center">
@@ -20,25 +23,25 @@
   </div>
   <ion-list >
 
-    <ion-item>
-      Nome 
+    <ion-item *ngFor="let nome of nomeUsuario">        
+      Nome : {{nome.nome_pessoa}}
     </ion-item>
+
     <ion-item *ngFor="let user of users">
       Login : {{user.login}}
     </ion-item>
-    <ion-item >
-      Uso
 
-          <ion-icon item-right name="refresh-circle"></ion-icon>
+    <ion-item >
+      Uso {{tempoValor}}
+          <ion-icon item-right name="refresh-circle" on-click="getTempoValor();"></ion-icon>
     </ion-item>
 
     <ion-item *ngFor="let salva of vaga">
-      Setor Utilizado: {{salva.vaga_utilizada}}
-      
-      <ion-icon name="add-circle" item-right on-click="salvarVaga(salva);" style="color:blue"> </ion-icon>
-      
+      Setor Utilizado: {{salva.vaga_utilizada}}      
+      <ion-icon name="add-circle" item-right on-click="salvarVaga(salva);" style="color:blue"> </ion-icon>      
     </ion-item>
     
+
   </ion-list>
 
 </ion-content>
