@@ -1,6 +1,8 @@
 <?php
+
+require("../conexaobanco/configcon.php");
 //Essa api recupera dados pessoais e coloca no menu alterar dados pessoais
-header("Access-Control-Allow-Origin: *");
+/*header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 
 
@@ -14,7 +16,7 @@ try {
 
 	if(!$con){
 		echo "Não foi possivel conectar com Banco de Dados!";
-	}
+	}*/
 
 	$query = $con->prepare("SELECT * FROM pessoa");
 
@@ -37,7 +39,7 @@ try {
 		echo $out;
 
 
-
+/*
 } catch (Exception $e) {
 	echo "Erro: ". $e->getMessage();
-};
+};*/

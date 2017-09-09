@@ -1,10 +1,11 @@
 <?php
+require("../conexaobanco/configdb.php");
 //ESTA API ESTÁ UTILIZANDO O BENCO DE DADOS AULA COM A TABELA
 //USUÁRIOS E UTILIZA ENVIO E RETORNO EM OBJETOS
-header("Access-Control-Allow-Origin:http://localhost:8100");
+/*header("Access-Control-Allow-Origin:http://localhost:8100");
 //header('Access-Control-Allow-Methods:PUT');
 header("Content-Type: application/x-www-form-urlencoded");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");*/
     //RECUPERAÇÃO DO FORMULÁRIO
     $data = file_get_contents("php://input");
     $objData = json_decode($data);
@@ -24,7 +25,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     $dados; // RECEBE ARRAY PARA RETORNO
     // INSERE OS DADOS
-    @$db = new PDO("mysql:host=localhost;dbname=estacionamentobd", "root", "");
+    //@$db = new PDO("mysql:host=localhost;dbname=estacionamentobd", "root", "");
    //VERIFICA SE TEM CONEXÃO
     if($db){
     //$sql = " UPDATE historico_pagamento SET vaga_utilizada='".$vaga_utilizada."' WHERE id_pessoa =".$id_pessoa;

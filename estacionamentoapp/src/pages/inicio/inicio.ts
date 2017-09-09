@@ -25,8 +25,7 @@ export class InicioPage {
               
 
             ) {
-    //this.value = {};
-    //this.vaga1[0]=1
+ 
   }
 
   ngOnInit() {

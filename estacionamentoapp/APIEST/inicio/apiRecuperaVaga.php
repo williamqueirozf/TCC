@@ -1,4 +1,6 @@
 <?php
+require("../conexaobanco/configcon.php");
+/*
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 
@@ -13,7 +15,7 @@ try {
 
 	if(!$con){
 		echo "Não foi possivel conectar com Banco de Dados!";
-	}
+	}*/
 
 	$query = $con->prepare("SELECT historico_pagamento.id_hp,vaga_utilizada FROM pessoa join historico_pagamento 
 		on pessoa.id_pessoa = historico_pagamento.id_pessoa 
@@ -36,7 +38,7 @@ try {
 		echo $out;
 
 
-
+/*
 } catch (Exception $e) {
 	echo "Erro: ". $e->getMessage();
-};
+};*/

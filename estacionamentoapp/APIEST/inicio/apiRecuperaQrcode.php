@@ -1,4 +1,6 @@
 <?php
+require("../conexaobanco/configcon.php");
+/*
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 //recupera login usuario
@@ -13,7 +15,7 @@ try {
 
 	if(!$con){
 		echo "Não foi possivel conectar com Banco de Dados!";
-	}
+	}*/
 
 	$query = $con->prepare("SELECT * FROM usuario");
 
@@ -46,6 +48,6 @@ try {
 
 
 
-} catch (Exception $e) {
+/*} catch (Exception $e) {
 	echo "Erro: ". $e->getMessage();
-};
+};*/

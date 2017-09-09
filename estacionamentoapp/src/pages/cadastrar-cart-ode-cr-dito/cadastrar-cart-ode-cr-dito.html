@@ -10,29 +10,29 @@
 </ion-header>
 <ion-content padding id="page9">
   <form [formGroup]="cadastro3" (ngSubmit)="postDados3()">
-    <ion-item id="cadastrarCartODeCrDito-input6">
+    <ion-item>
       <ion-label>
         Nome
       </ion-label>
       <ion-input type="text" placeholder="Conforme cartão" name="nomecartao" formControlName="nomecartao"></ion-input>
     </ion-item>
-    <ion-item id="cadastrarCartODeCrDito-input7">
+    <ion-item >
       <ion-label>
         Número
       </ion-label>
       <ion-input type="number" name="numerocartao" formControlName="numerocartao"></ion-input>
     </ion-item>
-    <ion-item id="cadastrarCartODeCrDito-input8">
+    <ion-item>
       <ion-label>
         Código Verificador
       </ion-label>
-      <ion-input type="number" name="codigoverificador" formControlName="codigoverificador"></ion-input>
+      <ion-input type="number" name="codigoverificador" formControlName="codigoverificador" ></ion-input>
     </ion-item>
-    <ion-item id="cadastrarCartODeCrDito-input9">
+    <ion-item>
       <ion-label>
         Validade
       </ion-label>
-      <ion-input type="number" name="validade" formControlName="validade"></ion-input>
+      <ion-input type="number" name="validade" formControlName="validade" ></ion-input>
     </ion-item>
     <button  ion-button color="positive" block icon-right on-click="goToInicio()" >
      Finalizar Cadastro

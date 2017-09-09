@@ -45,6 +45,11 @@ export class CadastrarDadosPessoais13Page {
 });
   }
 
+
+
+
+  
+
   goToCadastrarLoginESenha23(params){
     if (!params) params = {};
     this.navCtrl.push(CadastrarLoginESenha23Page);

@@ -38,6 +38,10 @@ export class ServiceProviderInicio {
             return this.http.get(this.api + 'apiRecuperaTempoValor.php').map(res=>res.json())
       }
 
+      getDataFazerLogin() { //valor a pagar por tempo de uso
+            return this.http.get(this.api + 'apiLogin.php').map(res=>res.json())
+      }
+
       updateVaga(data) {
     let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
     return this.http.post(this.api + "apiUpdateVaga.php", data, {
