@@ -19,11 +19,16 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { ServiceProvider } from '../providers/service/service';//
 import { ServiceProvider2 } from '../providers/service/service2';//
 import { ServiceProvider3 } from '../providers/service/service3';//
 
 import { ServiceProviderInicio } from '../providers/inicio/inicioservice';//
+import { AuthService } from '../providers/inicio/AuthService';//
+
+import { ServiceProviderHistorico } from '../providers/historico/historicoService';//
+
 
 import { HttpModule } from '@angular/http';//
 
@@ -46,7 +51,7 @@ import { HttpModule } from '@angular/http';//
   imports: [
     BrowserModule,
     NgxQRCodeModule,
-    HttpModule,//
+    HttpModule,//   
     IonicModule.forRoot(estacionamentoApp)
   ],
   bootstrap: [IonicApp],
@@ -65,15 +70,20 @@ import { HttpModule } from '@angular/http';//
     SobrePage,
     RedesCredenciadasPage
   ],
-  providers: [
+  providers: [    
     StatusBar,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: ServiceProvider, useClass: ServiceProvider},//
     {provide: ServiceProvider2, useClass: ServiceProvider2},//
     {provide: ServiceProvider3, useClass: ServiceProvider3},//
 
-    {provide: ServiceProviderInicio, useClass: ServiceProviderInicio}//
+    {provide: ServiceProviderInicio, useClass: ServiceProviderInicio},//
+
+    {provide: ServiceProviderHistorico, useClass: ServiceProviderHistorico}//
+
+
 
 
 

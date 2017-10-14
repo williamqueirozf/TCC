@@ -7,22 +7,48 @@ import { CadastrarCartODeCrDitoPage } from '../cadastrar-cart-ode-cr-dito/cadast
 
 import { Validators,FormBuilder} from '@angular/forms';//colocado para formulario
 import { ServiceProviderInicio } from '../../providers/inicio/inicioservice';//
+import { AuthService } from '../../providers/inicio/AuthService';//
+
+import { Usuario } from './usuario';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
+   login ;
+   senha;
 acesso : any[];
   constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
-                public service : ServiceProviderInicio
+                public service : ServiceProviderInicio,
+                private authService: AuthService
             ) {
                
 
   }
 
 
+  usuario: Usuario = new Usuario();
+  
+
+
+  ngOnInit() {
+
+  }
+
+  fazerLogin(usuario: Usuario){
+    this.authService.fazerLogin(this.usuario);
+    console.log("clicou");
+    console.log(this.login);
+    
+
+    //console.log(this.usuario);
+    //this.authService.fazerLogin(this.usuario);
+   // this.authService.fazerLogin(this.usuario);
+    /*this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
+   // console.log("clicou");
+  }
 
 
   goToInicio(params){

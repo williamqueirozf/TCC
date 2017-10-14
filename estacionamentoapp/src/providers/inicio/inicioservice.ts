@@ -13,10 +13,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProviderInicio {
 
-      api : string = 'http://localhost:80/APIEST/inicio/';
-
+      //api : string = 'http://localhost:80/APIEST/inicio/';
+        api : string = 'http://localhost:4000/APIEST/inicio/';
 
   constructor(public http: Http) {}
+
       getDataUsuarioId() {
             return this.http.get(this.api + 'apiRecuperaQrcode.php').map(res=>res.json())
       }

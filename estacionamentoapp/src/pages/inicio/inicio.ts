@@ -34,8 +34,9 @@ export class InicioPage {
            this.getDadosLogin() ;
            this.getNomeInicio();
            this.getTempoValor();
+           
      }
-
+     
     getDadosLogin() {
      //retorno de Dados
      this.service.getDataLogin()
