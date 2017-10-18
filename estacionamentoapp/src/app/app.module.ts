@@ -26,6 +26,8 @@ import { ServiceProviderInicio } from '../providers/inicio/inicioservice';// tel
 import { ServiceProviderHistorico } from '../providers/historico/historicoService';// tela historico
 import { Conexaobd } from '../providers/conexao/conexao';// centralizacao url banco de dados
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 
 
@@ -69,7 +71,8 @@ import { Conexaobd } from '../providers/conexao/conexao';// centralizacao url ba
   ],
   providers: [    
     StatusBar,
-    SplashScreen,    
+    SplashScreen,
+    Geolocation,    
     Conexaobd,//
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: ServiceProvider, useClass: ServiceProvider},//

@@ -1,5 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import { NavController,Platform } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google:any;
 
@@ -11,7 +12,7 @@ export class RedesCredenciadasPage {
 
 	//@ViewChild('map')mapElement;
 	//map: any;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,private geolocation: Geolocation) {
 
   }
 
@@ -20,18 +21,38 @@ export class RedesCredenciadasPage {
   }
 
 
-  
   private initMap(){
-  	let latLng = new google.maps.LatLng(-23.7218619,-46.5443031);
-  	let latLng1 = new google.maps.LatLng(-23.6982429,-46.5538633);
+  	this.geolocation.getCurrentPosition().then(result => {
+  		this.loadMap(result.coords.latitude,result.coords.longitude);
+
+  	});
+
+  }
+
+  private getAddress(latLng,sucessCallback){
+  	let geocoder = new google.maps.Geocoder;
+
+  	geocoder.geocode({location:latLng},(results,status)=>{
+  		if(status === google.maps.GeocoderStatus.OK){
+  			if(results[0]){
+  				sucessCallback(results[0].formatted_address);
+  			}
+  		}
+  	});
+  }
+
+  
+  private loadMap(lat,lng){
+  	let latLng = new google.maps.LatLng(lat,lng);
+  	//let latLng1 = new google.maps.LatLng(-23.6982429,-46.5538633);
   	
 
   	let mapOptions={
   		center: latLng,
   		zoom: 13,
   		mapTypeId: google.maps.MapTypeId.ROADMAP,
-  		disableDefaultUI:true//,
-  		//zoomControl: true
+  		disableDefaultUI:true,
+  		zoomControl: true
   	};
 
 
@@ -46,16 +67,24 @@ export class RedesCredenciadasPage {
   	
   	
   });
-    let marker1 = new google.maps.Marker({
+  /*  let marker1 = new google.maps.Marker({
   	position : latLng1
   	
   	
-  });
+  });*/
 
 
 
   marker.setMap(map);
-  marker1.setMap(map);
+
+  this.getAddress(latLng,address => {
+  	alert(address);
+  })
+  
+
+
+
+ // marker1.setMap(map);
 
 
   }
