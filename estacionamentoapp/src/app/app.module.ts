@@ -14,23 +14,20 @@ import { HistRicoPage } from '../pages/hist-rico/hist-rico';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { SobrePage } from '../pages/sobre/sobre';
 import { RedesCredenciadasPage } from '../pages/redes-credenciadas/redes-credenciadas';
-
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-
-import { ServiceProvider } from '../providers/service/service';//
-import { ServiceProvider2 } from '../providers/service/service2';//
-import { ServiceProvider3 } from '../providers/service/service3';//
-
-import { ServiceProviderInicio } from '../providers/inicio/inicioservice';//
-import { AuthService } from '../providers/inicio/AuthService';//
-
-import { ServiceProviderHistorico } from '../providers/historico/historicoService';//
-
-
 import { HttpModule } from '@angular/http';//
+
+import { ServiceProvider } from '../providers/service/service';// tela um de cadastro
+import { ServiceProvider2 } from '../providers/service/service2';// tela dois de cadastro
+import { ServiceProvider3 } from '../providers/service/service3';// tela tres de cadastro
+import { ServiceProviderInicio } from '../providers/inicio/inicioservice';// tela inicial
+import { ServiceProviderHistorico } from '../providers/historico/historicoService';// tela historico
+import { Conexaobd } from '../providers/conexao/conexao';// centralizacao url banco de dados
+
+
+
 
 @NgModule({
   declarations: [
@@ -72,8 +69,8 @@ import { HttpModule } from '@angular/http';//
   ],
   providers: [    
     StatusBar,
-    SplashScreen,
-    AuthService,
+    SplashScreen,    
+    Conexaobd,//
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: ServiceProvider, useClass: ServiceProvider},//
     {provide: ServiceProvider2, useClass: ServiceProvider2},//

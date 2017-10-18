@@ -12,22 +12,22 @@
   <div>
     <img src="assets/img/KfIBQkBATM66jgMlHTYx_P0WaMfiTSBqHptjAcFVk_images.png" style="display:block;width:50;height:auto;margin-left:auto;margin-right:auto;" />
   </div>
- 
-  <form >
+
+  <form [formGroup]="acesso" (ngSubmit)="loginDados()">
     <div class="spacer" style="width:283px;height:12px;" id="login-spacer1"></div>
     <ion-list>
       <ion-item>
         <ion-label>
           Usuário
         </ion-label>
-        <ion-input type="text" [(ngModel)]="login" name="login"></ion-input>
-      </ion-item>
+         <ion-input type="text" formControlName="login" name="login"></ion-input>
+        </ion-item>
       <ion-item>
         <ion-label>
           Senha
         </ion-label>
             
-        <ion-input type="text" [(ngModel)]="senha" name="first"></ion-input>
+        <ion-input type="text" name="senha" formControlName="senha"></ion-input>
       </ion-item>
     </ion-list>
 
@@ -36,6 +36,7 @@
     <input [(ngModel)]="senha" id="senha" type="password" class="validate">
     [disabled]="acesso.invalid" 
  <ion-input type="password" name="senha" [value]="senha" (input)="senha=$event.target.value"></ion-input>
+  <ion-input type="text" [(ngModel)]="login" name="login"></ion-input>
  {{login}}
    {{senha}}
   {{name}}
@@ -44,11 +45,11 @@
     <button  ion-button color="positive" block on-click="fazerLogin();">
       Entrar
     </button>
-    <button  ion-button clear color="positive" block on-click="goToCadastrarDadosPessoais13()">
+    <button  ion-button clear color="positive" block >
       Criar uma conta
     </button>
     <br>
-    
+    {{ acesso.value | json }}
   </form>
  
 

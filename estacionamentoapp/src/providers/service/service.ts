@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
+import {Conexaobd} from '../../providers/conexao/conexao';
 
 /*
   Generated class for the ServiceProvider provider.
@@ -13,28 +14,30 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProvider {
 
-      api : string = 'http://localhost:4000/APIEST/cadastropessoa/';
+      //api : string = 'http://localhost:4000/APIEST/cadastropessoa/';
+      api : string = 'cadastropessoa/';
 
 
-  constructor(public http: Http) {}
-      getData() {
-            return this.http.get(this.api + 'apiRecupera.php').map(res=>res.json())
-      }
+  constructor(public http: Http, public conexaobd:Conexaobd) {}
 
-            postData(parans) {
-            let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-            return this.http.post(this.api + "apiCadastro.php", parans, {
-                  headers:headers,
-                  method:"POST"
-            }).map(
-                  (res:Response) => {return res.json();}
-            );
-      }
+    getData() {
+    return this.http.get(this.conexaobd.url + this.api + 'apiRecupera.php').map(res=>res.json())
+    }
 
-
-      updateData(data) {
+    postData(parans) {
     let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-    return this.http.post(this.api + "apiUpdate.php", data, {
+    return this.http.post(this.conexaobd.url + this.api + "apiCadastro.php", parans, {
+          headers:headers,
+          method:"POST"
+    }).map(
+          (res:Response) => {return res.json();}
+    );
+    }
+
+
+    updateData(data) {
+    let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+    return this.http.post(this.conexaobd.url + this.api + "apiUpdate.php", data, {
           headers:headers,
           method:"POST"
     }).map(

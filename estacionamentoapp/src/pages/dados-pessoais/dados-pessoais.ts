@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';//
 import { Validators, FormBuilder } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
+import { DatePipe } from '@angular/common';
 //aqui
 @Component({
   selector: 'page-dados-pessoais',

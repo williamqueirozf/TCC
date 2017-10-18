@@ -3,6 +3,10 @@ import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import {Conexaobd} from '../../providers/conexao/conexao';
+
+
+
 //criada para trazer dados da tela inicial
 
 /*
@@ -12,40 +16,54 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ServiceProviderInicio {
+//
+        api : string = 'inicio/';        
+        
 
-      //api : string = 'http://localhost:80/APIEST/inicio/';
-        api : string = 'http://localhost:4000/APIEST/inicio/';
+  constructor(public http: Http,public conexaobd:Conexaobd) {
+    //console.log(this.conexaobd.url);
+     
 
-  constructor(public http: Http) {}
+  }
+
+
+     postDataLogin(parans) {
+        let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+        return this.http.post(this.conexaobd.url + this.api + "apiLoginServidor.php", parans, {
+              headers:headers,
+              method:"POST"
+        }).map(
+              (res:Response) => {return res.json();}
+        );
+      }
 
       getDataUsuarioId() {
-            return this.http.get(this.api + 'apiRecuperaQrcode.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaQrcode.php').map(res=>res.json())
       }
 
       getDataLogin() {
-            return this.http.get(this.api + 'apiRecuperaLogin.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaLogin.php').map(res=>res.json())
       }
 
-
       getDataInicioVaga() {
-            return this.http.get(this.api + 'apiRecuperaVaga.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaVaga.php').map(res=>res.json())
       }
 
       getDataNome() {
-            return this.http.get(this.api + 'apiRecuperaNome.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaNome.php').map(res=>res.json())
       }
 
       getDataTempoValor() { //valor a pagar por tempo de uso
-            return this.http.get(this.api + 'apiRecuperaTempoValor.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaTempoValor.php').map(res=>res.json())
       }
 
       getDataFazerLogin() { //valor a pagar por tempo de uso
-            return this.http.get(this.api + 'apiLogin.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiLogin.php').map(res=>res.json())
       }
 
-      updateVaga(data) {
+      updateVaga(data) { //atualizar vaga utilizada
     let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-    return this.http.post(this.api + "apiUpdateVaga.php", data, {
+    return this.http.post(this.conexaobd.url + this.api + "apiUpdateVaga.php", data, {
           headers:headers,
           method:"POST"
     }).map(

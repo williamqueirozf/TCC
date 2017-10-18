@@ -15,23 +15,22 @@
         <ion-item-sliding>
               <ion-item>
                     <h1 *ngIf="nomes">{{user.nome_pessoa}}</h1>
-                    <p>{{user.dt_nasc_pessoa}}</p>
-                    <p>Email:{{user.email_pessoa}}</p>
-                    <p>CPF:{{user.cpf_pessoa}}</p>
-                    <p>Telefone:{{user.telefone_pessoa}}</p>
-                    <p>Sexo:{{user.sexo_pessoa}}</p>
+                    <h2>{{user.dt_nasc_pessoa| date:'dd/MM/yyyy'}}</h2>
+                    <h2>Email:&nbsp;{{user.email_pessoa}}</h2>
+                    <h2>CPF:&nbsp;{{user.cpf_pessoa}}</h2>
+                    <h2>Telefone:&nbsp;{{user.telefone_pessoa}}</h2>
+                    <h2>Sexo:&nbsp;{{user.sexo_pessoa}}</h2>
               </ion-item>
-              <ion-item-options side="right">
-                    <button ion-button color="danger" (click)="deletarPerfil(user)">
-                          Deletar
-                    </button>
-              </ion-item-options>
+
               <ion-item-options side="left">
-                    <button ion-button color="secondary" (click)="editarPerfil(user)">
+                    <button ion-button color="positive" (click)="editarPerfil(user)">
                           Editar
                     </button>
               </ion-item-options>
         </ion-item-sliding>
+
   </ion-list>
 
+
 </ion-content>
+ 

@@ -3,6 +3,8 @@ import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import {Conexaobd} from '../../providers/conexao/conexao';
+
 //criada para trazer dados da tela inicial
 
 /*
@@ -13,12 +15,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProviderHistorico {
 
-      //api : string = 'http://localhost:80/APIEST/inicio/';
-        api : string = 'http://localhost:4000/APIEST/historico/';
 
-  constructor(public http: Http) {}
+        //api : string = 'http://localhost:4000/APIEST/historico/';
+        api : string = 'historico/'
+
+  constructor(public http: Http,public conexaobd:Conexaobd) {}
+
       getDataHistorico() {
-            return this.http.get(this.api + 'apiRecuperaHistorico.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaHistorico.php').map(res=>res.json())
       }
 
 

@@ -3,6 +3,8 @@ import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import {Conexaobd} from '../../providers/conexao/conexao';
+
 
 
 /*
@@ -13,21 +15,22 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceProvider2 {
 
-      api : string = 'http://localhost:4000/APIEST/cadastropessoa/';
+      //api : string = 'http://localhost:4000/APIEST/cadastropessoa/';
+      api : string = 'cadastropessoa/';
 
-  constructor(public http: Http) {}
+  constructor(public http: Http,public conexaobd:Conexaobd) {}
      getData() {
-            return this.http.get(this.api + 'apiRecupera.php').map(res=>res.json())
+            return this.http.get(this.conexaobd.url + this.api + 'apiRecupera.php').map(res=>res.json())
       }
 
-            postData(parans) {
-            let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-            return this.http.post(this.api + "apiCadastro2.php", parans, {
-                  headers:headers,
-                  method:"POST"
-            }).map(
-                  (res:Response) => {return res.json();}
-            );
+      postData(parans) {
+      let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+      return this.http.post(this.conexaobd.url + this.api + "apiCadastro2.php", parans, {
+            headers:headers,
+            method:"POST"
+      }).map(
+            (res:Response) => {return res.json();}
+      );
       }
 
 }

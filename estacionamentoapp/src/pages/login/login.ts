@@ -7,7 +7,7 @@ import { CadastrarCartODeCrDitoPage } from '../cadastrar-cart-ode-cr-dito/cadast
 
 import { Validators,FormBuilder} from '@angular/forms';//colocado para formulario
 import { ServiceProviderInicio } from '../../providers/inicio/inicioservice';//
-import { AuthService } from '../../providers/inicio/AuthService';//
+
 
 import { Usuario } from './usuario';
 
@@ -18,18 +18,22 @@ import { Usuario } from './usuario';
 export class LoginPage {
    login ;
    senha;
-acesso : any[];
+acesso : any = {};
+
   constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
-                public service : ServiceProviderInicio,
-                private authService: AuthService
-            ) {
-               
+                public service : ServiceProviderInicio
+                
+            )                {
+                this.acesso = this.formBuilder.group({
+                login:['', Validators.required],
+                senha:['', Validators.required]
 
+
+});
   }
 
 
-  usuario: Usuario = new Usuario();
   
 
 
@@ -37,10 +41,10 @@ acesso : any[];
 
   }
 
-  fazerLogin(usuario: Usuario){
-    this.authService.fazerLogin(this.usuario);
+  fazerLogin(){
+    
     console.log("clicou");
-    console.log(this.login);
+    
     
 
     //console.log(this.usuario);
@@ -49,6 +53,18 @@ acesso : any[];
     /*this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
    // console.log("clicou");
   }
+
+
+          loginDados() {
+              this.service.postDataLogin(this.acesso.value)
+                    .subscribe(
+                          data=>{console.log(data.mensage);
+                                //this.getDados();
+                                console.log(this.acesso);
+                          },
+                          err=>console.log(err)
+                    );
+        }
 
 
   goToInicio(params){
