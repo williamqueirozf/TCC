@@ -43,8 +43,9 @@ export class RedesCredenciadasPage {
 
   
   private loadMap(lat,lng){
-  	let latLng = new google.maps.LatLng(lat,lng);
-  	//let latLng1 = new google.maps.LatLng(-23.6982429,-46.5538633);
+  	let latLng = new google.maps.LatLng(lat,lng);//atual
+  	let latLng1 = new google.maps.LatLng(-23.6681915,-46.5356007); //sa
+  	let latLng2 = new google.maps.LatLng(-23.723221,-46.5453837);//sbc
   	
 
   	let mapOptions={
@@ -61,31 +62,72 @@ export class RedesCredenciadasPage {
 
 
   //this.map = new google.maps.Map(this.mapElement.nativeElement,mapOptions);
+
+    //setar local atual
+  	var localAtual = 'Local Atual'
+  	var myinfowindowlocalAtual = new google.maps.InfoWindow({
+   	content: localAtual
+	});
   
-    let marker = new google.maps.Marker({
-  	position : latLng
+    var marker = new google.maps.Marker({
+    position: latLng,
+    //icon: myicon,  
+    
+    infowindow: myinfowindowlocalAtual
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+        this.infowindow.open(map, this);
+
+	});
+	marker.setMap(map); 
+
+	/*this.getAddress(latLng,address => {  //ao inicializar Aplicativo Traz alert endereco
+		alert(address);
+	});*/
+
+
+    //credenciado A  	
+  	var credenciadoA = 'Av. Pereira Barreto, 42 - Vila Gilda, Santo André - SP, 09190-210'
+  	var myinfowindowcredenciadoA = new google.maps.InfoWindow({
+   	content: credenciadoA
+	});
+
+    let marker1 = new google.maps.Marker({
+  	position : latLng1,
   	
-  	
-  });
-  /*  let marker1 = new google.maps.Marker({
-  	position : latLng1
-  	
-  	
-  });*/
+	infowindow: myinfowindowcredenciadoA
+	});
+
+	google.maps.event.addListener(marker1, 'click', function() {
+        this.infowindow.open(map, this);
+
+	});
+
+	marker1.setMap(map);
 
 
 
-  marker.setMap(map);
+	//credenciado b  	
+  	var credenciadoB = 'Av. Rotary, 624 - Ferrazópolis, São Bernardo do Campo - SP, 09721-000'
+  	var myinfowindowcredenciadoB = new google.maps.InfoWindow({
+   	content: credenciadoB
+	});
 
-  this.getAddress(latLng,address => {
-  	alert(address);
-  })
-  
+    let marker2 = new google.maps.Marker({
+  	position : latLng2,
+  	//icon: myicon,
+  	title:'Shopping A',
 
+	infowindow: myinfowindowcredenciadoB
+	});
 
+	google.maps.event.addListener(marker2, 'click', function() {
+        this.infowindow.open(map, this);
 
- // marker1.setMap(map);
+	});
 
+	marker2.setMap(map);
+}
 
-  }
 }
