@@ -35,19 +35,24 @@ export class estacionamentoApp {
       splashScreen.hide();
     });
   }
+  
  goToPerfil(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(PerfilPage);
-  }goToDadosPessoais(params){
+    this.navCtrl.setRoot(DadosPessoaisPage);
+  }
+  /*  goToDadosPessoais(params){
     if (!params) params = {};
     this.navCtrl.setRoot(DadosPessoaisPage);
-  }goToAlterarLoginESenha(params){
+  }
+  goToAlterarLoginESenha(params){
     if (!params) params = {};
     this.navCtrl.setRoot(AlterarLoginESenhaPage);
   }goToAlterarCartODeCrDito(params){
     if (!params) params = {};
     this.navCtrl.setRoot(AlterarCartODeCrDitoPage);
-  }goToRedesCredenciadas(params){
+  }*/
+
+    goToRedesCredenciadas(params){
     if (!params) params = {};
     this.navCtrl.setRoot(RedesCredenciadasPage);
   }goToHistRico(params){

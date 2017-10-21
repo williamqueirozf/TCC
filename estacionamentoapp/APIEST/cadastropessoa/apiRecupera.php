@@ -32,6 +32,7 @@ try {
 			$out .= '"nome_pessoa": "'.$result["nome_pessoa"].'",';
 			$out .= '"email_pessoa": "'.$result["email_pessoa"].'",';
 			$out .= '"cpf_pessoa": "'.$result["cpf_pessoa"].'",';
+			$out .= '"dt_nasc_pessoa": "'.$result["dt_nasc_pessoa"].'",';
 			$out .= '"telefone_pessoa": "'.$result["telefone_pessoa"].'",';
 			$out .= '"sexo_pessoa": "'.$result["sexo_pessoa"].'"}';
 		}

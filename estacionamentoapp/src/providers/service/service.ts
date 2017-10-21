@@ -43,6 +43,27 @@ export class ServiceProvider {
     }).map(
           (res:Response) => {return res.json();}
     );
-}
+    }
+
+
+    updateCartao(data) {
+    let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
+    return this.http.post(this.conexaobd.url + this.api + "apiUpdateCartao.php", data, {
+          headers:headers,
+          method:"POST"
+    }).map(
+          (res:Response) => {return res.json();}
+    );
+    }
+
+
+    getCartao() {
+    return this.http.get(this.conexaobd.url + this.api + 'apiRecuperaCartao.php').map(res=>res.json())
+    }
+
+
+
+
+
 
 }

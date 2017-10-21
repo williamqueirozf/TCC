@@ -30,7 +30,8 @@ export class CadastrarLoginESenha23Page {
               {
                this.cadastro2 = this.formBuilder.group({
                login:['', Validators.required],
-               senha:['', Validators.required]
+               senha:['', Validators.required],
+               confirmarsenha:['', Validators.required]
 });
  }
   goToCadastrarCartODeCrDito(params){

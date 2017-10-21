@@ -2,7 +2,10 @@ import { Component,ViewChild } from '@angular/core';
 import { NavController,Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
+
 declare var google:any;
+
+var iconBase ="assets/img/model4-32.png";
 
 @Component({
   selector: 'page-redes-credenciadas',
@@ -62,7 +65,7 @@ export class RedesCredenciadasPage {
 
 
   //this.map = new google.maps.Map(this.mapElement.nativeElement,mapOptions);
-
+    
     //setar local atual
   	var localAtual = 'Local Atual'
   	var myinfowindowlocalAtual = new google.maps.InfoWindow({
@@ -71,7 +74,7 @@ export class RedesCredenciadasPage {
   
     var marker = new google.maps.Marker({
     position: latLng,
-    //icon: myicon,  
+    icon:iconBase,
     
     infowindow: myinfowindowlocalAtual
 	});

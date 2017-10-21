@@ -4,33 +4,60 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Dados Pessoais
+      Perfil
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <h2 class="titulo">Dados Pessoais</h2>
   <ion-list *ngFor="let user of users">
         <ion-item-sliding>
               <ion-item>
-                    <h1 *ngIf="nomes">{{user.nome_pessoa}}</h1>
-                    <h2>{{user.dt_nasc_pessoa| date:'dd/MM/yyyy'}}</h2>
+                    <h2>Nome:&nbsp;{{user.nome_pessoa}}</h2>
+                    <h2>Nascimento:&nbsp;{{user.dt_nasc_pessoa| date:'dd/MM/yyyy'}}</h2>
                     <h2>Email:&nbsp;{{user.email_pessoa}}</h2>
                     <h2>CPF:&nbsp;{{user.cpf_pessoa}}</h2>
                     <h2>Telefone:&nbsp;{{user.telefone_pessoa}}</h2>
                     <h2>Sexo:&nbsp;{{user.sexo_pessoa}}</h2>
               </ion-item>
-
               <ion-item-options side="left">
                     <button ion-button color="positive" (click)="editarPerfil(user)">
                           Editar
                     </button>
               </ion-item-options>
         </ion-item-sliding>
-
   </ion-list>
 
 
+<hr/>
+
+  <h2 class="titulo" >Cartão de Crédito</h2>
+  <ion-list *ngFor="let cartao_pessoa of cartao">
+        <ion-item-sliding>
+              <ion-item>
+                    <h2>Nome:&nbsp;{{cartao_pessoa.nome_cartao}}</h2>
+                    <h2>Número:&nbsp;{{cartao_pessoa.numero_cartao}}</h2>
+                    <h2>Cod Seg:&nbsp;{{cartao_pessoa.codseg_cartao}}</h2>
+                    <h2>Validade:&nbsp;{{cartao_pessoa.dt_venc_cartao}}</h2>                
+                  
+                   
+              </ion-item>
+              <ion-item-options side="left">
+                    <button ion-button color="positive" (click)="editarCartao(cartao_pessoa)">
+                          Editar
+                    </button>
+              </ion-item-options>
+        </ion-item-sliding>
+  </ion-list>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="text-align:center">Easyparking 2017 &copy;</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
 </ion-content>
  
+

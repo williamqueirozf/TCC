@@ -13,6 +13,7 @@ export class DadosPessoaisPage {
 
 cadastro : any = {};
 users : any[];
+cartao : any[];
 nomes : boolean = true;
 constructor(public navCtrl: NavController,
               public service : ServiceProvider,
@@ -22,6 +23,7 @@ constructor(public navCtrl: NavController,
 
   ngOnInit() {
            this.getDados();
+           this.getDadosCartao();
      }
 
      getDados() {
@@ -29,6 +31,15 @@ constructor(public navCtrl: NavController,
      this.service.getData()
            .subscribe(
                  data=> this.users = data
+                 ,err=> console.log(err)
+           );
+     }
+
+     getDadosCartao() {
+     //retorno de Dados
+     this.service.getCartao()
+           .subscribe(
+                 data=> this.cartao = data
                  ,err=> console.log(err)
            );
      }
@@ -60,7 +71,7 @@ constructor(public navCtrl: NavController,
      }*/
      editarPerfil(req) {
          let prompt = this.alertCtrl.create({
-           title: 'Edita Perfil',
+           title: 'Editar Dados Pessoais',
            inputs: [
              {
                name: 'nome_pessoa',
@@ -116,8 +127,107 @@ constructor(public navCtrl: NavController,
          prompt.present();
        }
 
+       //cartao _update
+
+
+       editarCartao(req) {
+         let prompt = this.alertCtrl.create({
+           title: 'Editar Cartão',
+           inputs: [
+             {
+               name: 'nome_cartao',
+               placeholder: 'Nome Conforme Cartão',
+               value:req.nome_cartao
+             },
+             {
+               name: 'numero_cartao',
+               placeholder: 'Numero do Cartão',
+               value:req.numero_cartao
+             },
+             {
+               name: 'codseg_cartao',
+               placeholder: 'Codigo de Segurança',
+               value:req.codseg_cartao
+             },
+             {
+               name: 'dt_venc_cartao',
+               placeholder: 'MMAA',
+               value:req.dt_venc_cartao
+             },
+           ],
+           buttons: [
+             {
+               text: 'Cancelar',
+               handler: data => {}
+             },
+             {
+               text: 'Salvar',
+               handler: data => {
+
+                 let params:any={
+                    //variavel banco de dados:data.variavel java
+                       id_cartao: req.id_cartao,
+                       numero_cartao: data.numero_cartao,
+                       nome_cartao: data.nome_cartao,
+                       codseg_cartao: data.codseg_cartao,
+                       dt_venc_cartao: data.dt_venc_cartao
+                 }
+                 console.log(data);
+                 this.service.updateCartao(params)
+                 .subscribe(
+                       data=>{
+                             console.log(data.mensage);
+                             this.getDadosCartao();                             
+                             },
+                       err=>console.log(err)
+                 );
+               }
+             }
+           ]
+         });
+         prompt.present();
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      mostraNome() {
            this.nomes = !this.nomes;
      }
+
+
+
+
+
+
+
+
+
+
+
+
 }

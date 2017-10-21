@@ -8,8 +8,9 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page9">
+<ion-content>
   <form [formGroup]="cadastro3" (ngSubmit)="postDados3()">
+    <h2 class="titulo">Informações de Pagamento</h2>
     <ion-item>
       <ion-label>
         Nome
@@ -34,9 +35,15 @@
       </ion-label>
       <ion-input type="number" name="validade" formControlName="validade" ></ion-input>
     </ion-item>
-    <button  ion-button color="positive" block icon-right on-click="goToInicio()" >
+    <button [disabled]="cadastro3.invalid" ion-button color="positive" block icon-right on-click="goToInicio()" >
      Finalizar Cadastro
    </button>
      </form>
-   <p ion-text> {{ cadastro3.value | json }}</p>
+   <!--<p ion-text> {{ cadastro3.value | json }}</p>-->
+
+   <ion-footer>
+  <ion-toolbar>
+    <ion-title style="text-align:center">Easyparking 2017 &copy;</ion-title>
+  </ion-toolbar>
+</ion-footer>
 </ion-content>

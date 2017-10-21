@@ -43,15 +43,9 @@ acesso : any = {};
 
   fazerLogin(){
     
-    console.log("clicou");
-    
-    
-
-    //console.log(this.usuario);
-    //this.authService.fazerLogin(this.usuario);
-   // this.authService.fazerLogin(this.usuario);
-    /*this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
-   // console.log("clicou");
+    console.log("clicou");  
+    this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
+   
   }
 
 

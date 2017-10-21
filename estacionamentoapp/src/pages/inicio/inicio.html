@@ -5,7 +5,7 @@
     </button>
 
     <ion-title>
-      Dados Pessoais
+      Inicio
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -33,12 +33,12 @@
 
     <ion-item >
       Uso {{tempoValor}}
-          <ion-icon item-right name="refresh-circle" on-click="getTempoValor();"></ion-icon>
+          <ion-icon item-right name="refresh-circle" style="color:#008000" on-click="getTempoValor();"></ion-icon>
     </ion-item>
 
     <ion-item *ngFor="let salva of vaga">
       Setor Utilizado: {{salva.vaga_utilizada}}      
-      <ion-icon name="add-circle" item-right on-click="salvarVaga(salva);" style="color:blue"> </ion-icon>      
+      <ion-icon name="add-circle" item-right on-click="salvarVaga(salva);" style="color:#4169E1"> </ion-icon>      
     </ion-item>    
 
   </ion-list>
