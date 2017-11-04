@@ -16,21 +16,22 @@ import { Usuario } from './usuario';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-   login ;
-   senha;
+login ;
+senha;
 acesso : any = {};
+
 
   constructor(public navCtrl: NavController,
                 public formBuilder: FormBuilder,
                 public service : ServiceProviderInicio
                 
-            )                {
+            ) {
                 this.acesso = this.formBuilder.group({
                 login:['', Validators.required],
                 senha:['', Validators.required]
 
 
-});
+  });
   }
 
 
@@ -41,24 +42,31 @@ acesso : any = {};
 
   }
 
-  fazerLogin(){
+  /*fazerLogin(){
     
     console.log("clicou");  
-    this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
+    this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo
    
   }
+*/
 
-
-          loginDados() {
-              this.service.postDataLogin(this.acesso.value)
-                    .subscribe(
-                          data=>{console.log(data.mensage);
-                                //this.getDados();
-                                console.log(this.acesso);
-                          },
-                          err=>console.log(err)
-                    );
-        }
+  loginDados() {                    
+      this.service.postDataLogin(this.acesso.value)
+            .subscribe(
+                  data=>{
+                    if(data.permissao === true){
+                      
+                    this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
+                    
+                  }
+                  else{
+                    alert("Tente Novamente. Login ou Senha Inválidos")
+                  }; //this.getDados();
+                        
+                  },
+                  err=>console.log(err)
+            );
+}
 
 
   goToInicio(params){

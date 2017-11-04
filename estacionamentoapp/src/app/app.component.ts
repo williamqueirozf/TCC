@@ -25,7 +25,7 @@ import { InicioPage } from '../pages/inicio/inicio';
 })
 export class estacionamentoApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = InicioPage;//InicioPage
+    rootPage:any = LoginPage;//InicioPage
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -36,10 +36,7 @@ export class estacionamentoApp {
     });
   }
   
- goToPerfil(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(DadosPessoaisPage);
-  }
+
   /*  goToDadosPessoais(params){
     if (!params) params = {};
     this.navCtrl.setRoot(DadosPessoaisPage);
@@ -51,7 +48,11 @@ export class estacionamentoApp {
     if (!params) params = {};
     this.navCtrl.setRoot(AlterarCartODeCrDitoPage);
   }*/
-
+  
+ goToPerfil(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(DadosPessoaisPage);
+  }
     goToRedesCredenciadas(params){
     if (!params) params = {};
     this.navCtrl.setRoot(RedesCredenciadasPage);

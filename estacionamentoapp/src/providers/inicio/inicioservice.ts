@@ -29,7 +29,7 @@ export class ServiceProviderInicio {
 
      postDataLogin(parans) {
         let headers = new Headers({ 'Content-Type' : 'application/x-www-form-urlencoded' });
-        return this.http.post(this.conexaobd.url + this.api + "apiLoginServidor.php", parans, {
+        return this.http.post(this.conexaobd.url + this.api + "apiLogin.php", parans, {
               headers:headers,
               method:"POST"
         }).map(

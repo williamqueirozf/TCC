@@ -1,19 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <!--<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button>
+    </button>-->
     <ion-title>
       Login
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page5">
+<ion-content>
+  <br>
+  <br>
   <div>
     <img src="assets/img/KfIBQkBATM66jgMlHTYx_P0WaMfiTSBqHptjAcFVk_images.png" style="display:block;width:50;height:auto;margin-left:auto;margin-right:auto;" />
+    
   </div>
 
-  <form [formGroup]="acesso" (ngSubmit)="loginDados()">
+  <form [formGroup]="acesso" (ngSubmit)="loginDados()">    
     <div class="spacer" style="width:283px;height:12px;" id="login-spacer1"></div>
     <ion-list>
       <ion-item>
@@ -27,7 +30,7 @@
           Senha
         </ion-label>
             
-        <ion-input type="text" name="senha" formControlName="senha"></ion-input>
+        <ion-input type=number name="senha" formControlName="senha"></ion-input>
       </ion-item>
     </ion-list>
 
@@ -40,18 +43,19 @@
  {{login}}
    {{senha}}
   {{name}}
+  on-click="fazerLogin();"
     </div>-->
    
-    <button  ion-button color="positive" block on-click="fazerLogin();">
+    <button [disabled]="acesso.invalid" ion-button color="positive" block >
       Entrar
     </button>
-    <button  ion-button clear color="positive" block on-click="goToCadastrarDadosPessoais13()">
-      Criar uma conta
-    </button>
+
     <br>
      <!--{{ acesso.value | json }}-->
   </form>
- 
+     <button  ion-button clear color="positive" block on-click="goToCadastrarDadosPessoais13()">
+      Criar uma conta
+    </button>
 
 
   
