@@ -55,7 +55,7 @@ acesso : any = {};
             .subscribe(
                   data=>{
                     if(data.permissao === true){
-                      
+                      console.log(this.acesso.value);
                     this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
                     
                   }
