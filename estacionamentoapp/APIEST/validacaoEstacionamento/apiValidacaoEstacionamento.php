@@ -39,10 +39,7 @@ if(!$con){
       						  ON pessoa.id_pessoa = usuario.id_pessoa
       						  JOIN historico_pagamento
       						  ON historico_pagamento.id_pessoa = pessoa.id_pessoa
-      						  WHERE historico_pagamento.dt_saida AND id_usuario = '$text'");
-
-
-
+      						  WHERE historico_pagamento.dt_saida is null AND id_usuario = '$text'");
 
 
       $query->execute();
@@ -56,6 +53,8 @@ if(!$con){
       if($text != $result['id_usuario']){
             $resultado = ["permissao" => false, "erro" => "Por Gentileza.Digija-se ao autoatendimento!"];
       };
+
+
 
       echo json_encode($resultado);
 

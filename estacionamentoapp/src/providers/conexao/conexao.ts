@@ -1,5 +1,5 @@
 export class Conexaobd {
-  url: string = 'http://179.113.137.159:4000/APIEST/';
+  url: string = 'http://192.168.0.20:4000/APIEST/';
 
   
 

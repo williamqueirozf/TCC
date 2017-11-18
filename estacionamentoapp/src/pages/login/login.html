@@ -46,7 +46,7 @@
   on-click="fazerLogin();"
     </div>-->
    
-    <button [disabled]="acesso.invalid" ion-button color="positive" block >
+    <button [disabled]="acesso.invalid" ion-button color="positive" block n-click="presentLoading();">
       Entrar
     </button>
 

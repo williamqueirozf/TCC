@@ -8,22 +8,25 @@ import { CadastrarCartODeCrDitoPage } from '../cadastrar-cart-ode-cr-dito/cadast
 import { Validators,FormBuilder} from '@angular/forms';//colocado para formulario
 import { ServiceProviderInicio } from '../../providers/inicio/inicioservice';//
 
+import { AlertController, LoadingController } from 'ionic-angular';//
 
-import { Usuario } from './usuario';
+
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
-login ;
-senha;
+//login ;
+//senha;
 acesso : any = {};
 
 
   constructor(public navCtrl: NavController,
-                public formBuilder: FormBuilder,
-                public service : ServiceProviderInicio
+              public formBuilder: FormBuilder,
+              public service : ServiceProviderInicio,
+              private alertCtrl: AlertController,
+              public loadingCtrl: LoadingController
                 
             ) {
                 this.acesso = this.formBuilder.group({
@@ -34,7 +37,14 @@ acesso : any = {};
   });
   }
 
-
+presentLoading() { //metodo utilizado pra carregar pagina
+let loader = this.loadingCtrl.create({
+  content: "Por Favor Aguarde...",
+  duration: 3000,
+  dismissOnPageChange: true //utilizado pra aparecer quando há uma demora na troca de página
+});
+loader.present();
+  }
   
 
 
@@ -56,11 +66,26 @@ acesso : any = {};
                   data=>{
                     if(data.permissao === true){
                       console.log(this.acesso.value);
-                    this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
-                    
+
+                      let alert = this.alertCtrl.create({
+                      title: 'Seja Bem Vindo',
+                      subTitle: data.nome_pessoa,
+                      buttons: ['Ok']
+                      });
+                      alert.present();
+
+
+                      console.log(data.nome_pessoa);
+                      this.navCtrl.push(InicioPage); //redireciona para a tela inicial se tudo estiver certo*/
+                       
                   }
                   else{
-                    alert("Tente Novamente. Login ou Senha Inválidos")
+                      let alert = this.alertCtrl.create({
+                      title: 'Credenciais não Encontradas',
+                      subTitle:"Tente Novamente. Login ou Senha Inválidos.",
+                      buttons: ['Ok']
+                      });
+                      alert.present();
                   }; //this.getDados();
                         
                   },

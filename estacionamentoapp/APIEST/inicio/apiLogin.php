@@ -30,13 +30,13 @@ if(!$con){
 		echo "Não foi possivel conectar com Banco de Dados!";
 	};
 
-      $query = $con->prepare("SELECT * FROM usuario WHERE login = '$login'");
+      $query = $con->prepare("SELECT USUARIO.*,nome_pessoa FROM usuario JOIN PESSOA ON usuario.ID_PESSOA = PESSOA.ID_PESSOA WHERE login = '$login'");
       $query->execute();
       $result = $query->fetch();
       $resultado;
 
       if($login == $result['login'] && $senha ==  $result['senha']){
-            $resultado = ["permissao" => true, "login"=>$result['login']];
+            $resultado = ["permissao" => true, "nome_pessoa"=>$result['nome_pessoa']];
       };
 
       if($login != $result['login'] || $senha != $result['senha']){
